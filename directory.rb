@@ -1,24 +1,24 @@
 #first, we print the list of students
 students = [
-"Steve Musgrave",
-"Sroop Sunar",
-"Colin Marshall",
-"Josh Fail-Brown",
-"Louise Lai",
-"Robin Doble",
-"Alex Wong",
-"Scott Dimmock",
-"Muhanad Al-Rubaiee",
-"Shelley Hope",
-"Will Hall",
-"Oliver Delevingne",
-"Nico",
-"Apostolis",
-"Stefania",
-"Robert Leon",
-"Emma Williams",
-"Joey Wolf",
-"Julie Walker"
+["Steve Musgrave", :March],
+["Sroop Sunar", :March],
+["Colin Marshall", :March],
+["Josh Fail-Brown", :March],
+["Louise Lai", :March],
+["Robin Doble", :March],
+["Alex Wong", :March],
+["Scott Dimmock", :March],
+["Muhanad Al-Rubaiee", :March],
+["Shelley Hope", :March],
+["Will Hall", :March],
+["Oliver Delevingne", :March],
+["Nico", :March],
+["Apostolis", :March],
+["Stefania", :March],
+["Robert Leon", :March],
+["Emma Williams", :March],
+["Joey Wolf", :March],
+["Julie Walker", :March]
 ]
 
 def print_header
@@ -26,9 +26,9 @@ puts "The students of my cohort at Makers Academy"
 puts "-----------"
 end
 
-def print(names)
-	names.each do |name|
-		puts name
+def print(students)
+	students.each do |student|
+		puts "#{student[0]} (#{student[1]} cohort)"
 	end
 end
 
