@@ -1,41 +1,34 @@
-#first, we print the list of students
-students = [
-["Steve Musgrave", :March],
-["Sroop Sunar", :March],
-["Colin Marshall", :March],
-["Josh Fail-Brown", :March],
-["Louise Lai", :March],
-["Robin Doble", :March],
-["Alex Wong", :March],
-["Scott Dimmock", :March],
-["Muhanad Al-Rubaiee", :March],
-["Shelley Hope", :March],
-["Will Hall", :March],
-["Oliver Delevingne", :March],
-["Nico", :March],
-["Apostolis", :March],
-["Stefania", :March],
-["Robert Leon", :March],
-["Emma Williams", :March],
-["Joey Wolf", :March],
-["Julie Walker", :March]
-]
-
-def print_header
-puts "The students of my cohort at Makers Academy"
-puts "-----------"
+def input_students
+	puts "Please enter the names of students"
+	puts "To finish, just hit return twice"
+	students =[]
+	name = gets.chomp
+	while !name.empty? do
+		students << {:name => name, :cohort => :March}
+			puts "Now we have #{students.length} students"
+			name = gets.chomp
+		end
+	students
 end
 
-def print(students)
-	students.each do |student|
-		puts "#{student[0]} (#{student[1]} cohort)"
+
+def print_header 
+	puts "The students of my cohort at Makers Academy"
+	puts "-------------"
+end
+
+def print(listofstudents)
+	listofstudents.each do |student|
+		puts "#{student[:name]} (#{student[:cohort]}cohort)"
 	end
 end
 
 def print_footer(names)
-puts "Overall, we have #{names.length} great students"
-end
+	puts "Overall, we have #{names.length} great students"
+end	
 
+
+students = input_students
 print_header
 print(students)
 print_footer(students)
