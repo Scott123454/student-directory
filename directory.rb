@@ -20,3 +20,6 @@ puts "Emma Williams"
 puts "Joey Wolf"
 puts "Julie Walker"
 
+print "Overall, we have "
+print 19
+puts " great students"
