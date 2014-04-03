@@ -23,6 +23,10 @@ def print(listofstudents)
 	end
 end
 
+def select_students(students)
+	students.select{|student| student[:name].start_with? ("A")}
+end
+
 def print_footer(names)
 	puts "Overall, we have #{names.length} great students"
 end	
@@ -30,5 +34,5 @@ end
 
 students = input_students
 print_header
-print(students)
+print(select_students(students))
 print_footer(students)
