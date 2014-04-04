@@ -27,17 +27,26 @@ def select_students(students)
 	students.select{|student| student[:name].start_with? ("A")}
 end
 
-def Twelve_characters(namelength)
-	namelength.select{|student| student[:name].length <12}
+#def twelve_characters(namelength)
+#	namelength.select{|student| student[:name].length <12}
+#end
+
+
+def print_using_until(printusinguntil)
+	count = 0
+	while count < printusinguntil.length 
+		student=printusinguntil[count]
+		puts "#{count + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+		count = count + 1
+	end
 end
 
-
-def print_footer(names)
-	puts "Overall, we have #{names.length} great students"
-end	
+#def print_footer(names)
+#	puts "Overall, we have #{names.length} great students"
+#end	
 
 
 students = input_students
 print_header
-print(select_students(Twelve_characters(students)))
-print_footer(students)
+print_using_until(students)
+#print_footer(students)
