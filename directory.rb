@@ -27,6 +27,11 @@ def select_students(students)
 	students.select{|student| student[:name].start_with? ("A")}
 end
 
+def Twelve_characters(namelength)
+	namelength.select{|student| student[:name].length <12}
+end
+
+
 def print_footer(names)
 	puts "Overall, we have #{names.length} great students"
 end	
@@ -34,5 +39,5 @@ end
 
 students = input_students
 print_header
-print(select_students(students))
+print(select_students(Twelve_characters(students)))
 print_footer(students)
