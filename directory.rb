@@ -4,7 +4,7 @@ def input_students
 	students =[]
 	name = gets.chomp
 	while !name.empty? do
-		students << {:name => name, :cohort => :March}
+		students << {:name => name, :cohort => :March, :gender => :male}
 			puts "Now we have #{students.length} students"
 			name = gets.chomp
 		end
@@ -19,7 +19,7 @@ end
 
 def print(listofstudents)
 	listofstudents.each_with_index do |student, index|
-		puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+		puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort who is a #{student[:gender]}"
 	end
 end
 
@@ -32,21 +32,21 @@ end
 #end
 
 
-def print_using_until(printusinguntil)
-	count = 0
-	while count < printusinguntil.length 
-		student=printusinguntil[count]
-		puts "#{count + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
-		count = count + 1
-	end
-end
+#def print_using_until(printusinguntil)
+#	count = 0
+#	while count < printusinguntil.length 
+#		student=printusinguntil[count]
+#		puts "#{count + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+#		count = count + 1
+#	end
+#end
 
-#def print_footer(names)
-#	puts "Overall, we have #{names.length} great students"
-#end	
+def print_footer(names)
+	puts "Overall, we have #{names.length} great students"
+end	
 
 
 students = input_students
 print_header
-print_using_until(students)
-#print_footer(students)
+print(students)
+print_footer(students)
