@@ -1,0 +1,36 @@
+students = [
+
+["Steve Musgrave", :March],
+["Sroop Sunar", :March],
+["Colin Marshall", :March],
+["Josh Fail-Brown", :March],
+["Louise Lai", :March],
+["Robin Doble", :March],
+["Alex Wong", :March],
+["Scott Dimmock", :March],
+["Muhanad Al-Rubaiee", :March],
+["Shelley Hope", :March],
+["Will Hall", :March],
+["Oliver Delevingne", :March],
+["Nico", :March],
+["Apostolis", :March],
+["Stefania", :March],
+["Robert Leon", :March],
+["Emma Williams", :March],
+["Joey Wolf", :February],
+["Julie Walker", :February]
+  ]
+
+mapped_students = students.group_by {|x| x[1]}
+p mapped_students[:March]
+
+
+
+# 		|  } |student, cohort| 
+# 	puts {|students, cohort| cohort == March} do
+# 		puts students
+# 	end
+# end
+
+
+# print(print_students_cohort_group)
