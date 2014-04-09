@@ -109,13 +109,25 @@ def save_students
 end
 
 def load_students
-	file = File.open("students1.csv", "r")
+	file = File.open(filename = "students1.csv")
+	file.readlines(filename, "r")
 	file.readlines.each do |line|
 		name, cohort = line.chomp.split(',')
-		@students << {:name => name, :cohort => cohort.to_sym}
+		@students << {:name => name, :email => :email, :skype_id => :skype_id}
 	end
 	file.close
 end
 
+def try_load_students
+	filename = ARGV.first
+	return if filename.nil?
+	if File.exists?(filename)
+		load_students(filename)
+		puts "Loaded #{students.length} from #{filename}"
+	else
+		puts "Sorry, #{filename} doesn't exist"
+		exit
+	end
+end
 
 interactive_menu
