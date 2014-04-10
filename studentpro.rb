@@ -17,7 +17,7 @@ end
 def input_students
 	puts "Please enter the first name of the students(s)"
 	#get the first name
-	name = gets.chomp
+	name = STDIN.gets.chomp
 	#while the name is not empty prompt for other info and repeat proccess
 	while !name.empty? do
 		#prompt for email
@@ -31,19 +31,17 @@ def input_students
 		puts "Now we have #{@students.length} students"
 		# get another name from the user
 		puts "Please enter the next name of the students(s), or hit enter to finish"		
-		name = gets.chomp
+		name = STDIN.gets.chomp
 	end
 	# return the array of students
-	save_students
 	@students
 end
 
 	
 def print_students_list
-		i = 0
-		@students.each do |element|
-		puts "#{i += 1}. #{element[:name]}, #{element[:email]}, #{element[:skype_id]}"
-		end
+	@students.each_with_index do |element, index|
+	puts "#{index + 1}. #{element[:name]}, #{element[:email]}, #{element[:skype_id]}"
+	end
 end
 
 
@@ -75,7 +73,7 @@ def process(selection)
 	show_students
 	#saves to students1
 	when "3"
-	save_students 
+	save_students
 	when "4"
 	#loads students from students1
 	load_students
@@ -92,25 +90,27 @@ def interactive_menu
 		#1. print menu and ask user what to do
 			print_menu
 		#2. take user selection and run method process 
-			process(gets.chomp)
+			process(STDIN.gets.chomp)
 	end
 end
 
 def save_students
 	#open the file for writing
-	file = File.open("students1.csv","a")
-	#iterate over the array of students
 	@students.each do |student|
-		student_data = [student[:name],student[:email],student[:skype_id]]
-		csv_line=student_data.join(",")
-		file.puts csv_line 
+		file = File.open("students1.csv","a") do |line|
+		#iterate over the array of students
+			line << "\n"
+			line << student[:name] + ',' + student[:email] + ',' + student[:skype_id]
+			line << "\n"
+		end
 	end
-	file.close
+	# file.close
 end
 
-def load_students
-	file = File.open(filename = "students1.csv")
-	file.readlines(filename, "r")
+def load_students(filename = 'students1.csv')
+
+# filename, mode="r"[, opt]{|file| }
+	file = File.open(filename)
 	file.readlines.each do |line|
 		name, cohort = line.chomp.split(',')
 		@students << {:name => name, :email => :email, :skype_id => :skype_id}
@@ -118,16 +118,17 @@ def load_students
 	file.close
 end
 
-def try_load_students
+def try_load_students(filename = 'students1.csv')
 	filename = ARGV.first
 	return if filename.nil?
 	if File.exists?(filename)
 		load_students(filename)
-		puts "Loaded #{students.length} from #{filename}"
+		puts "Loaded #{@students.length} from #{filename}"
 	else
 		puts "Sorry, #{filename} doesn't exist"
 		exit
 	end
 end
 
+try_load_students
 interactive_menu
